@@ -145,15 +145,14 @@ On rappelle des propriétés utilisées dans toute la suite pour comparer deux e
 	D'autre part, on peut déduire l'expression de \( x \) et de \( y \) à partir de celle de \( r \) directement, ainsi l'application formée est bijective.
 \end{proof}
 \begin{corollary}
-	Puisque \( \mathbb{C} \) est isomorphe à \( \mathbb{R}^{2} \) (en tant qu'ensembles), on a \( |\mathbb{C}| = |\mathbb{R}^{2}| = |\mathbb{R}| \).
+	Puisque \( \mathbb{C} \) est isomorphe à \( \mathbb{R}^{2} \), on a \( |\mathbb{C}| = |\mathbb{R}^{2}| = |\mathbb{R}| \).
 \end{corollary}
 
-Avec un raisonnement similaire, on peut obtenir que \( |\mathbb{R}| \) et \( |\mathbb{R}^{n}| \) pour \( n \in \mathbb{N} \). \cite{dumoncel2002philosophie}
+\par On peut étendre la preuve ci-dessus à un nombre fini de coordonnées et obtenir que \( |\mathbb{R}| = |\mathbb{R}^{n}| \) pour \( n \in \mathbb{N} \). \cite{dumoncel2002philosophie}
 On établit ainsi l'existence de deux cardinaux infinis distincs : celui de \( \mathbb{N} \) et celui de \( \mathbb{R} \). Avec la proposition suivante, on va voir qu'il en existe une infinité.
 
-\par On peut étendre la preuve ci-dessus avec un nombre fini de coordonnées.
 \begin{remark}
-	Il est possible de construire des applications continues, surjectives mais pas injectives entre \( \mathbb{R} \) et \( \mathbb{R}^{2} \) comme le montre l'exemple des courbes de Peano. \cite{peano1890curve}
+	Il est aussi possible de construire des applications continues, surjectives mais pas injectives entre \( \mathbb{R} \) et \( \mathbb{R}^{2} \) comme le montre l'exemple des courbes de Peano. \cite{peano1890curve}
 \end{remark}
 \begin{proposition}[théorème de Cantor]
 	Soit \( A \) un ensemble. Alors l'ensemble des parties de A et \( A \) ne sont pas en bijection.
@@ -289,7 +288,10 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 
 	Donc \( \bigcup\Omega < S(\bigcup\Omega) \le \bigcup\Omega \), ce qui implique \( \bigcup\Omega \in \bigcup\Omega \), or cela contredit 2.1.7.
 \end{proof}\begin{definition}[Ordinal omega]
-	On définit l'ordinal \( \omega \) comme la borne supérieure des ordinaux \( \underline{n} \).
+	On définit l'ordinal \( \omega \) comme la borne supérieure des ordinaux \( \underline{n} \) :
+\begin{equation*}
+	\omega \coloneqq \{\underline{0}, \underline{1}, \underline{2}, \ldots\}
+\end{equation*}	
 \end{definition}
 
 \par On distingue désormais deux familles d'ordinaux.
@@ -297,9 +299,17 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	Soit \( \alpha \) un ordinal non nul. \( \alpha \) est dit successeur s'il existe \( \beta \) vérifiant \( \alpha = S(\beta) \), et limite si on a \( \alpha = \bigcup \alpha \).
 \end{definition}
 
-\begin{tikzpicture}
-	\draw [line width=5pt] (-1.2,0) -- (1.2,0);
+\begin{center}
+	\begin{tikzpicture}
+	\draw [line width=2pt] (0,0) -- (10,0);
+	\foreach \x in {0,1,...,9}
+	\filldraw[color=black] (\x,0) circle [radius=2pt] node[below=2ex] {$\underline{\x}$};
+	\draw [line width=2pt, dashed] (10,0) -- (11.5,0);
+	\draw [line width=2pt] (12,0) -- (15,0);
+	\foreach \x in {12,13,14,15}
+	\filldraw[color=black] (\x,0) circle [radius=2pt] node[below=2ex] {$\omega$};
 \end{tikzpicture}
+\end{center}
 \par On définit principalement trois opérations (que l'on étendra aux cardinaux infinis) : l'addition, la multiplication et l'exponentiation ordinale.
 \begin{proposition}[Induction ordinale]
 	Le principe de récurrence définit sur les entiers peut s'étendre aux ordinaux \( \underline{n} \).
