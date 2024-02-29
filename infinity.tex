@@ -1,0 +1,335 @@
+\documentclass{article}
+\usepackage[T1]{fontenc} % Font enconding
+\usepackage[french]{babel} % Input encoding in French
+\usepackage{mathtools} % Include math symbols
+\usepackage{amsfonts} % Include font for math symbols
+\usepackage{amsthm} % Change definition layout
+\usepackage{enumitem} % Modern item enumeration
+\usepackage{hyperref} % Select links in table of contents
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+}
+\usepackage{csquotes} % Typeset quoted texts in French correctly
+\usepackage[backend=biber]{biblatex} % For bibliography usage
+\usepackage{tikz} % Draw pictures and illustrate examples
+\addbibresource{references.bib}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsubsection]{Définition}
+
+\theoremstyle{plain}
+\newtheorem{proposition}[subsubsection]{Proposition}
+
+\newtheorem{theorem}[subsubsection]{Théorème}
+
+\theoremstyle{plain}
+\newtheorem{corollary}[subsubsection]{Corollaire}
+
+\theoremstyle{plain}
+\newtheorem{lemma}[subsubsection]{Lemme}
+
+\theoremstyle{plain}
+\newtheorem{remark}[subsubsection]{Remarque}
+
+\title{UE Projet Tutoré : Ensembles de cardinal infini}
+\author{Auteur :\\
+	Guillaume SALLOUM \\ 
+	Avignon Université \\ 
+	L2 Mathématiques
+	\and
+	Enseignant : \\
+	Marc ARCOSTANZO \\
+	Avignon Université}
+\date{}
+
+\begin{document}
+
+
+\maketitle
+\begin{abstract}
+	Nous étudierons quelques propriétés des ensembles infinis et de combinatoire infine.
+	Dans un premier temps nous établirons l'existence d'ensembles infinis et indénombrables en prouvant l'indénombrabilité de \( \mathbb{R} \). 
+	Nous construirons ensuite les ordinaux dits de Von Neumann, qui nous permettrons d'aborder (très brièvement) l'étude des cardinaux infinis.
+	Dans tout ce qui suit, on se place dans le modèle axiomatique ZFC où l'on précisera quand on utilise AC. Les références sont indiquées par un numéro clickable dans la bibliographie.
+\end{abstract}
+
+\tableofcontents
+\section{Ensembles infinis et dénombrabilité}
+\subsection{Bijections et dénombrabilité}
+
+On rappelle des propriétés utilisées dans toute la suite pour comparer deux ensembles entre eux.
+
+\begin{definition}[Ensemble fini]
+	Soit \( E \) un ensemble.
+	\( E \) est dit fini s'il est vide ou en bijection avec un sous-ensemble de \( \mathbb{N} \) de la forme \( \{1, 2, \ldots, n\} \).
+\end{definition}
+
+\begin{definition}[Dénombrabilité]
+	Soit \( E \) un ensemble. \( E \) est \textit{dénombrable} si et seulement si on peut énumérer successivement tout les éléments de \( E \) :
+\begin{equation*}
+	E \coloneqq \{e_{1}, e_{2}, \ldots, e_{n}\} 
+\end{equation*} 
+	Autrement dit, \( E \) est dénombrable s'il est en bijection avec \( \mathbb{N} \). Sinon \( E \) est dit \textit{indénombrable}.
+\end{definition}
+\begin{definition}[Cardinal]
+	Soit \( E \) et \( F \) deux ensembles \textit{finis}.
+	Alors E est en bijection avec un intervalle de \( \mathbb{N} \) de la forme \( \{1, 2, \ldots, n\} \) où \textit{n} est le cardinal de \( E \). \\
+	\( E \) et \( F \) sont de même cardinal si et seulement si il existe une bijection de \( E \) dans \( F \).
+\
+\end{definition}
+
+\begin{proposition}[Bijections]
+	\( \mathbb{N} \), \( \mathbb{Z} \) et \( \mathbb{Q} \) sont en bijection et sont donc dénombrables. \cite{tao2014analysis}
+\end{proposition}
+\begin{proof}
+	Une bijection explicite entre \( \mathbb{N} \) et \( \mathbb{Z} \) est donnée par :
+	\[
+		\begin{cases}
+			2n, & \mapsto n \\
+			2n + 1 & \mapsto -n
+		\end{cases}
+	\]
+\end{proof}
+
+\subsection{Indénombrabilité de l'ensemble des réels et implications}
+
+\begin{theorem}[Argument diagonal de Cantor]
+	\( \mathbb{R} \) n'est pas en bijection avec \( \mathbb{N} \). \cite{aigner2018proofs} \cite{dehornoy2017théorie}
+\end{theorem}
+\begin{proof}
+	Tout sous-ensemble d'un ensemble dénombrable est \textit{au plus dénombrable} : soit fini soit dénombrable. On se restreint donc à l'intervalle \( ]0,1] \) et on montre qu'il n'est pas en bijection avec \( \mathbb{N} \), ce qui implique le résultat énoncé. \\
+	Supposons que \( I = ]0,1] \) est dénombrable, alors \( I = \{i_{1}, i_{2}, \ldots \} \). \\ 
+	Chaque \( i_{n} \in I \) admet une représentation décimale infinie de la forme :
+	\begin{equation*}
+		i_{n} = 0,i_{n1}i_{n2}i_{n3}\ldots 
+	\end{equation*}
+	où \( i_{nk} \in [\![0,9]\!] \).
+
+	On considère le tableau à double entrée formé avec \( i_{1}, i_{2}, \ldots, i_{n}, \ldots \) (INSERER TABLEAU)
+
+	Soit \( l_{n} \) le plus petit entier dans \( \{1,2\}\) tel que \( l_{n} \neq i_{nk}\). 
+
+	Alors \( r = 0,r_{1}r_{2}r_{3} \ldots r_{n}\ldots \) admet un indice dans le tableau, par exemple \( r = r_{k} \). Or cela est impossible puique \( r_{k} \neq a_{kk} \).
+	
+\end{proof}
+
+\begin{theorem}[Cantor, Fraenkel, König]
+	L'ensemble \( \mathbb{R}^{2} \coloneqq \mathbb{R} \times \mathbb{R}\) est en bijection avec \( \mathbb{R} \). \cite{aigner2018proofs} 
+\end{theorem}
+\begin{proof}
+	De même que pour le théorème prcédent, on se restreint à établir une bijection entre les paires \( (x,y) \) telles que \( 0 < x,y \le 1 \) sur l'intervalle \( ]0,1] \).
+	Soit \( (x,y) \in \mathbb{R}^{2} \) munis de leur représentation décimale infinie :
+	\begin{align*}
+		x &= 0.r1r2r3 & r4r5 & r6 & &\ldots\\
+		y &= 0.r1r2  & r3 & r4 & r5 &\ldots
+	\end{align*}
+
+	où l'on sépare chaque décimale de \( x \) et de \( y \) en groupes en prenant à chaque fois la prochaine décimale non nulle (inclusive). Sur un exemple, cela donne :
+	\begin{align*}
+		x &= 0.3 & 01 && 2 && 007 && 08 & \ldots\\
+		y &= 0.009 & 2 && 05 && 1 && 0008 & \ldots
+	\end{align*}
+
+	On associe ensuite à cette paire un réel \( r \in ]0,1] \) représenté par le premier groupe de \( x \), le premier groupe de \( y \), le second de \( x \), puis de \( y \) et ainsi de suite.
+	Dans l'exemple ci-dessus, cela donne :
+	\begin{align*}
+		r &= 0.3 & 009 && 01 && 2 && 2 && 05 && 007 && 1 && 08 && 0008
+	\end{align*}
+
+	Puisque ni \( x \) ni \( y \) ne forment des suites de décimales composées uniquement de zéros, on trouve qu'il en est de même pour la représentation décimale et non terminalle de r. 
+	D'autre part, on peut déduire l'expression de \( x \) et de \( y \) à partir de celle de \( r \) directement, ainsi l'application formée est bijective.
+\end{proof}
+\begin{corollary}
+	Puisque \( \mathbb{C} \) est isomorphe à \( \mathbb{R}^{2} \) (en tant qu'ensembles), on a \( |\mathbb{C}| = |\mathbb{R}^{2}| = |\mathbb{R}| \).
+\end{corollary}
+
+Avec un raisonnement similaire, on peut obtenir que \( |\mathbb{R}| \) et \( |\mathbb{R}^{n}| \) pour \( n \in \mathbb{N} \). \cite{dumoncel2002philosophie}
+On établit ainsi l'existence de deux cardinaux infinis distincs : celui de \( \mathbb{N} \) et celui de \( \mathbb{R} \). Avec la proposition suivante, on va voir qu'il en existe une infinité.
+
+\par On peut étendre la preuve ci-dessus avec un nombre fini de coordonnées.
+\begin{remark}
+	Il est possible de construire des applications continues, surjectives mais pas injectives entre \( \mathbb{R} \) et \( \mathbb{R}^{2} \) comme le montre l'exemple des courbes de Peano. \cite{peano1890curve}
+\end{remark}
+\begin{proposition}[théorème de Cantor]
+	Soit \( A \) un ensemble. Alors l'ensemble des parties de A et \( A \) ne sont pas en bijection.
+\end{proposition} 
+\begin{proof}
+	On note \( \mathcal{P}(A) \coloneqq \{ I \mid I \subseteq A \}\). \\
+	Soit \( f : A \rightarrow \mathcal{P}(A) \) quelconque et \( B \coloneqq \{ a \in A \mid a \not\in f(a)\} \). On montre que \( f \) n'est pas surjective. Si \( a \in B \), alors \( a \in B \setminus f(a) \) donc \( f(a) \neq B \). Si \( a \not\in B\) alors \( a \in f(a) \setminus B \) donc \( f(a) \neq B \). D'où \( B \) n'est pas dans l'ensemble image de \( f \), et \( f \) n'est pas surjective.
+\end{proof}
+\begin{corollary}[Infinité d'infinis]
+	Les ensembles \( \mathbb{N}, \mathcal{P}(\mathbb{N}), \mathcal{P}(\mathcal{P}(\mathbb{N})), \ldots \) sont deux à deux non en bijection.
+\end{corollary}
+
+D'après l'argument diagonal de Cantor on obtient \( |\mathbb{R}| > |\mathbb{N}| \), ce qui soulève la question de \textit{l'hypothèse du continu} : tout sous-ensemble infini de \( \mathbb{R} \) est-il soit en bijection avec \( \mathbb{N} \), ou avec \( \mathbb{R} \)? Cette question, ainsi que le Corollaire 1.2.5 on motivé le développement de la théorie des ensembles.
+
+\clearpage
+\section{Ordinaux}
+
+Dans ce chapitre, on se basera principalement sur \cite{dehornoy2017théorie}.
+On commence par introduire quelques définitions.
+\subsection{Construction des ordinaux} 
+
+\begin{definition}[Bon ordre]
+	Soit \( (E,\le) \) un ensemble muni d'une relation d'ordre. \( \le \) est un bon ordre si toute partie non vide de \( E \) posséde un élément minimal par rapport à \( \le \). Dans ce cas on appelle \( (E,\le) \) un ensemble \textit{bien ordonné}.	
+\end{definition}
+
+\begin{definition}[Segment initial]
+	Si \( (E,\le) \) est un ensemble bien ordonné et \( y \in E\), on appelle \textit{segment initial} de \( (A,\le) \) déterminé par \( y \) l'ensemble suivant :
+	\begin{equation*}
+		Init(y) \coloneqq \{ x \in E \mid x \le y \}
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}[Comparaison des bons ordres]
+	Soit \( (A,\le) \) et \( (B,\preceq) \) deux ensembles bien ordonnées. Alors on a l'un des cas suivants :
+	\begin{enumerate}[label = (\roman*)]
+		\item \( (A,<) \) et \( (B,\preceq) \) sont isomorphes;
+		\item \( (A,<) \) est isomorphe à un segment initial de \( (B,\preceq) \)
+		\item \( (B,\preceq) \) est isomorphe à un segment initial de \( (A,<) \)
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}[Ensemble transitif]
+	Soit \( E \) un ensemble quelconque. E est \textit{transitif} si tout les éléments d'éléments de \( E \) sont des éléments de \( E \). En d'autres termes :
+	\begin{equation}\label{eq:Tr} \tag{Tr}
+		x \in a \in E \implies x \in E 
+	\end{equation}
+\end{definition}
+
+\begin{lemma}[Stabilité par opérations ensemblistes]
+	\begin{enumerate}[label = (\roman*)]
+		\item \( \emptyset \) est transitif ;
+		\item Si \( E \) est transitif, alors \( E \cap \{E\} \), \( \bigcup E \) et \( \mathcal{P}(E) \) le sont aussi ;
+		\item Toute réunion ou intersection d'ensemble transitifs est transitive
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}[label = (\roman*)]
+		\item Comme \( \emptyset \) n'a pas d'éléments \eqref{eq:Tr} est vérifiée.
+		\item On suppose que \( E \) est transitif. Si \( x \in e \in E \cup \{E\} \) alors \( x \) est dans \( E \) ou \( x = E \). Dans les deux cas \( x \in E \) donc à fortiori \( x \in E \cup \{E\} \). Donc \( E \cup \{E\} \) est transitif.
+
+			Supposons \( x \in E \in \mathcal{P}(E) \), alors \( x \in e \subseteq E \) et donc \( x \in E \). D'après \eqref{eq:Tr}, \( x \subseteq E \) donc \( x \subseteq \mathcal{P}(E)\). Donc \( \mathcal{P}(E) \) est transitif.
+
+			Supposons \( x \in E \in \bigcup E \). Il existe \( y \in E \) tel que \( x \in y \in E \), donc \( x \in E \) puisque \( E \) est transitif, et \( x \in \bigcup E \). Donc \( \bigcup E \) est transitif.
+		\item Soit \( (E_{i})_{i \in I} \) une famille d'ensembles transitifs. Supposons \( x \in a \in \bigcup_{i\in I} A_{i} \). Il existe donc \( i \) vérifiant \( x \in a \in A_{i} \), donc \( x \in A_{i} \) par hypothèse, et aussi \( x \in \bigcup_{i \in I}\). Donc \( \bigcup_{i \in I} A_{i} \) est transitif. On utilise le même raisonnement avec \( \bigcap_{i \in I} A_{i} \) pour obtenir le résultat énoncé.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}[Ordinal]
+	Un ensemble \( \alpha \) est un ordinal si \( \alpha \) est transitif et que la restriction de \( \in  \) à \( \alpha \) notée \( \in_{|\alpha} \) est un bon ordre strict.
+\end{definition}
+
+\begin{definition}[Caractérisation des ordinaux]
+	Un ensemble \( \alpha \) est un ordinal si on a :
+	\begin{enumerate}[label = (\roman*)]
+		\item \( \forall x \in \alpha \), \( x \subseteq \alpha \) ;
+		\item \( \forall x \in \alpha \), \( x \not\in x \) ;
+		\item \( \forall x, y, z \in \alpha \), si \( x \in y \) et \( y \in z \), alors \( x \in z \) ;
+		\item \( \forall I \subseteq \alpha \), \( I \neq \emptyset \), \( \exists x \in \alpha \) tel que \( x \in y \) pour tout \( y \in I \) avec \( x \neq y \).
+	\end{enumerate}
+\end{definition}
+
+\subsection{Arithmétique des ordinaux}
+
+\par Puisque les ordinaux forment un cas particulier d'ensembles transitifs, les ordinaux sont stables par union et par intersection d'après le Lemme 2.1.5. On peut donc construire une infinité d'ordinaux.
+
+\begin{definition}[Successeur]
+	Soit \( E \) un ensemble et \( S(E) \coloneqq E \cup \{E\} \). Pour \( n \in \mathbb{N} \), on note \( \underline{n} \) l'ordinal \( S^{n}(\emptyset) \).
+\end{definition}
+
+\begin{description}
+	\item \( \underline{0} = \emptyset \),
+	\item \( \underline{1} = S(\underline{0}) = \{\underline{0}\} \),
+	\item \( \underline{2} = S(\underline{1}) = \underline{1} \cup  \{\underline{1}\} = \{\underline{0}\} \cup \{\underline{1}\} = \{\underline{0}, \underline{1}\},  etc.\)
+\end{description}
+
+On montre à partir de cette définition qu'un ordinal \( \underline{n} \) possède exactement \( n \) éléments.
+\begin{proposition}[Ordinaux \underline{n}]
+	Soit \( n \in \mathbb{N} \). L'ordinal \( \underline{n} \) admet exactement \( n \) éléments qui sont les ordinaux \( \underline{k} \) pour \( k < n \).
+\end{proposition}
+\begin{proof}
+	On raisonne par récurrence sur \( n \). 
+	
+	L'ordinal \( \underline{0} \) n'admet aucun élément par définition.
+	On suppose \( n > 0 \), et on pose \( m \coloneqq n - 1 \). Puisque \( \underline{n} = \underline{m} \cup \{\underline{m}\} \), par hypothèse n est formé des \( m \) ordinaux \( \underline{k} \) où \( k < m \) et de \( \{\underline{m}\} \). Or \( \{\underline{m}\} \) est transitif, donc n'est pas dans \( \underline{m} \). D'où \( \underline{n} \) a \( n \) éléments qui sont les ordinaux \( \underline{k} \) avec \( k < n \).
+\end{proof}
+
+\begin{proposition}[Borne inférieure et bon ordre]
+	Tout ensemble non vide d'ordinaux \( E\) admet un minorant \( \bigcap E \).
+\end{proposition}
+\begin{proof}
+	On pose \( \alpha \coloneqq \bigcap E \). Pour tout \( \beta \) dans \( E \) on a \( \alpha \in \beta \) donc \( \alpha \le \beta \). Si \( \alpha < \beta \) alors \( \alpha \in \bigcap E \) et \( \alpha \in \alpha \) ce qui contredit la définition 2.1.7. Donc on doit avoir \( \alpha = \beta \) où \( \alpha \) est le plus petit élément de \( E \).
+\end{proof}
+\begin{proposition}[Borne supérieure]
+	Un ensemble d'ordinaux \( E \) possède une borne supérieure \( \bigcup E \). 
+\end{proposition}
+\begin{proof}
+	Soit \( e \coloneqq \bigcup E \). Les éléments de \( E \) sont transitifs donc \( e \) est transitif. De plus \( \forall \alpha, \beta, \gamma \in E \), par propriétés des ensembles transitifs \( \alpha \notin \alpha  \) et si \( \alpha \in \beta \in \gamma \) alors \( \alpha \in \gamma \). Donc la relation \( \in_{|e} \) est un bon ordre strict. D'où \( e \) est un ordinal.
+
+	Soit \( X \in \bigcup E \) non vide et \( \alpha \coloneqq \bigcap X \). Alors \( \alpha \) est un ordinal qui minore \( X \) d'après la proposition 2.2.3. Cela implique que pour tout \( \beta \in X \) distincts de \( \alpha \) on a \( \alpha \in \beta \). 
+
+	Pour tout \( \alpha \in E \) on a \( \alpha \subseteq e \), donc \( \alpha \le e \). Si \( \beta \) est un minorant strict de \( e \) on a \( \beta < e \) et \( \beta \in \bigcup E \). On a donc un \( \alpha \) dans la réunion tel que \( \beta \in \alpha \) et \( \beta < \alpha \) où \( \beta \) n'est pas un majorant de \( E \). Ainsi \( e \) est le plus petit majorant de \( E \).
+\end{proof}
+
+\par On cite un résultat simialire au paradoxe de Russell (voir \cite{dumoncel2002philosophie} pour une discussion sur le sujet) sur les ensembles : on ne peut pas construire un ensemble qui contient tout les ordinaux (pas seulement les ordinaux \( \underline{n} \)).
+\begin{proposition}[Paradoxe de Burlati-Forti]
+	Il n'existe pas d'ensemble contenant tout les ordinaux.
+\end{proposition}
+\begin{proof}
+	On raisonne par l'absurde en supposant qu'il existe un ensemble \( \Omega \) contenant tout les ordinaux.
+	
+	Alors \( \bigcup \Omega \) est un ordinal qui vérifie : \( \forall \alpha \in \Omega, \alpha \le \bigcup \Omega \). 
+
+	Donc \( \bigcup\Omega < S(\bigcup\Omega) \le \bigcup\Omega \), ce qui implique \( \bigcup\Omega \in \bigcup\Omega \), or cela contredit 2.1.7.
+\end{proof}\begin{definition}[Ordinal omega]
+	On définit l'ordinal \( \omega \) comme la borne supérieure des ordinaux \( \underline{n} \).
+\end{definition}
+
+\par On distingue désormais deux familles d'ordinaux.
+\begin{definition}[Ordinal successeur, limite]
+	Soit \( \alpha \) un ordinal non nul. \( \alpha \) est dit successeur s'il existe \( \beta \) vérifiant \( \alpha = S(\beta) \), et limite si on a \( \alpha = \bigcup \alpha \).
+\end{definition}
+
+\begin{tikzpicture}
+	\draw [line width=5pt] (-1.2,0) -- (1.2,0);
+\end{tikzpicture}
+\par On définit principalement trois opérations (que l'on étendra aux cardinaux infinis) : l'addition, la multiplication et l'exponentiation ordinale.
+\begin{proposition}[Induction ordinale]
+	Le principe de récurrence définit sur les entiers peut s'étendre aux ordinaux \( \underline{n} \).
+\end{proposition}
+\begin{proof}
+	Insérer schema de preuve
+\end{proof}
+\begin{proposition}[Addition]
+	Soit \( \alpha \) et \( \beta \) deux ordinaux. 
+	On définit \( \alpha + \beta \) comme l'unique ordinal \( \gamma \) tel que \( (\gamma,\in) \) est isomorphe à \( (\alpha,\in) + (\beta,\in) \).
+\end{proposition}
+\begin{proof}
+	
+\end{proof}
+
+\clearpage
+\section{Cardinaux infinis}
+
+\clearpage
+\printbibliography
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
