@@ -193,7 +193,14 @@ On commence par introduire quelques définitions.
 		\item \( (B,\preceq) \) est isomorphe à un segment initial de \( (A,<) \)
 	\end{enumerate}
 \end{proposition}
-
+\begin{proof}[Idée générale de la démonstration]
+	On définit une application :
+	\begin{align*}
+		F &: A \rightarrow B \\
+		a &\mapsto F(a) = b \Leftrightarrow \text{Init(a) est isomorphe à Init(b)}
+	\end{align*}
+	On montre que F est strictement croissante et que le domaine de F est clos par minorant dans \( (A,<) \). Réciproquement, on montre que l'image de F est close par minorant dans \( (B,\preceq) \) pour obtenir que F est un isomorphisme de son domaine sur son image.
+\end{proof}
 \begin{definition}[Ensemble transitif]
 	Soit \( E \) un ensemble quelconque. E est \textit{transitif} si tout les éléments d'éléments de \( E \) sont des éléments de \( E \). En d'autres termes :
 	\begin{equation}\label{eq:Tr} \tag{Tr}
@@ -299,24 +306,37 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	Soit \( \alpha \) un ordinal non nul. \( \alpha \) est dit successeur s'il existe \( \beta \) vérifiant \( \alpha = S(\beta) \), et limite si on a \( \alpha = \bigcup \alpha \).
 \end{definition}
 
+\par On représente la construction obtenue jusqu'ici : la suite des ordinaux où \( \omega \) est un ordinal limite.
 \begin{center}
 	\begin{tikzpicture}
 	\draw [line width=2pt] (0,0) -- (10,0);
 	\foreach \x in {0,1,...,9}
 	\filldraw[color=black] (\x,0) circle [radius=2pt] node[below=2ex] {$\underline{\x}$};
 	\draw [line width=2pt, dashed] (10,0) -- (11.5,0);
-	\draw [line width=2pt] (12,0) -- (15,0);
-	\foreach \x in {12,13,14,15}
-	\filldraw[color=black] (\x,0) circle [radius=2pt] node[below=2ex] {$\omega$};
+	\draw [line width=2pt, ->] (12,0) -- (16.5,0);
+	\filldraw[color=black] (12,0) circle [radius=2pt] node[below=2ex] {$\omega$} node[above=2ex] {fini \( \leftarrow \mid \rightarrow \) infini };
+	\filldraw[color=black] (13,0) circle [radius=2pt] node[below=2ex] {$S(\omega)$};
+	\filldraw[color=black] (14,0) circle [radius=2pt] node[below=2ex] {$S^{2}(\omega)$};
 \end{tikzpicture}
 \end{center}
-\par On définit principalement trois opérations (que l'on étendra aux cardinaux infinis) : l'addition, la multiplication et l'exponentiation ordinale.
+
 \begin{proposition}[Induction ordinale]
 	Le principe de récurrence définit sur les entiers peut s'étendre aux ordinaux \( \underline{n} \).
 \end{proposition}
+
+\par Une conséquence importante de ce résultat est un théorème qui servira de base à la construction des cardinaux infinis : on peut exhiber un représentant unique pour chaque ensemble bien ordonné.
+
+\begin{theorem}[Comparaison]
+	Tout ensemble bien ordonné \( (E,<) \) est isomorphe à un unique ordinal
+\end{theorem}
 \begin{proof}
-	
+	Soit \( ((E,<) \) un ensemble bien ordonné. D'après la Proposition 2.1.3, soit \( (E,<) \) est isomorphe à la suite des ordinaux, soit la suite des ordinaux est isomorphe à un segment initial de \( (E,<) \) ou \( (E,<) \) est isomorphe à un segment initial de la suite des ordinaux.
+
+	Or la suite des ordinaux ne forme pas un ensemble d'après le paradoxe de Burlati-Forti, donc il ne reste que le dernier cas. Un segment initial de la suite des ordinaux est un ordinal par transitivité. Par unicité des segments initiaux, l'ordinal obtenu est unique, d'où le résultat. 
 \end{proof}
+
+\par On définit principalement trois opérations (que l'on étendra aux cardinaux infinis) : l'addition, la multiplication et l'exponentiation ordinale. On admet le principe d'induction sur les ordinaux, qui s'étend naturellement de celui sur les entiers.
+
 \begin{proposition}[Addition]
 	Soit \( \alpha \) et \( \beta \) deux ordinaux. 
 	On définit \( \alpha + \beta \) comme l'unique ordinal \( \gamma \) tel que \( (\gamma,\in) \) est isomorphe à \( (\alpha,\in) + (\beta,\in) \).
