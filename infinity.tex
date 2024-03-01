@@ -57,7 +57,7 @@
 	Nous étudierons quelques propriétés des ensembles infinis et de combinatoire infine.
 	Dans un premier temps nous établirons l'existence d'ensembles infinis et indénombrables en prouvant l'indénombrabilité de \( \mathbb{R} \). 
 	Nous construirons ensuite les ordinaux dits de Von Neumann, qui nous permettrons d'aborder (très brièvement) l'étude des cardinaux infinis.
-	Dans tout ce qui suit, on se place dans le modèle axiomatique ZFC où l'on précisera quand on utilise AC. Les références sont indiquées par un numéro clickable dans la bibliographie.
+	Dans tout ce qui suit, on se place dans le modèle axiomatique ZFC où l'on précisera quand on utilise AC. 
 \end{abstract}
 
 \tableofcontents
@@ -79,7 +79,7 @@ On rappelle des propriétés utilisées dans toute la suite pour comparer deux e
 \end{equation*} 
 	Autrement dit, \( E \) est dénombrable s'il est en bijection avec \( \mathbb{N} \). Sinon \( E \) est dit \textit{indénombrable}.
 \end{definition}
-\begin{definition}[Cardinal]
+\begin{definition}[Cardinal d'un ensemble fini]
 	Soit \( E \) et \( F \) deux ensembles \textit{finis}.
 	Alors E est en bijection avec un intervalle de \( \mathbb{N} \) de la forme \( \{1, 2, \ldots, n\} \) où \textit{n} est le cardinal de \( E \). \\
 	\( E \) et \( F \) sont de même cardinal si et seulement si il existe une bijection de \( E \) dans \( F \).
@@ -160,8 +160,10 @@ On établit ainsi l'existence de deux cardinaux infinis distincs : celui de \( \
 \begin{proposition}[théorème de Cantor]
 	Soit \( A \) un ensemble. Alors l'ensemble des parties de A et \( A \) ne sont pas en bijection.
 \end{proposition} 
+\begin{notation}
+	On note \( \mathcal{P}(A) \coloneqq \{ I \mid I \subseteq A \}\).	
+\end{notation}
 \begin{proof}
-	On note \( \mathcal{P}(A) \coloneqq \{ I \mid I \subseteq A \}\). \\
 	Soit \( f : A \rightarrow \mathcal{P}(A) \) quelconque et \( B \coloneqq \{ a \in A \mid a \not\in f(a)\} \). On montre que \( f \) n'est pas surjective. Si \( a \in B \), alors \( a \in B \setminus f(a) \) donc \( f(a) \neq B \). Si \( a \not\in B\) alors \( a \in f(a) \setminus B \) donc \( f(a) \neq B \). D'où \( B \) n'est pas dans l'ensemble image de \( f \), et \( f \) n'est pas surjective.
 \end{proof}
 \begin{corollary}[Infinité d'infinis]
@@ -173,11 +175,11 @@ D'après l'argument diagonal de Cantor on obtient \( |\mathbb{R}| > |\mathbb{N}|
 \clearpage
 \section{Ordinaux}
 
-Dans ce chapitre et le suivant, on se basera principalement sur \cite{dehornoy2017théorie}. Les ordinaux constituent une extension de l'arithmétique des entiers naturels et permettent de dénombrer en préservant la propriété de bon ordre (voir ci-dessus). Ils serviront de base à la construction des cardinaux infinis. 
+Dans ce chapitre et le suivant, on se basera principalement sur \cite{dehornoy2017théorie}. Les ordinaux constituent une extension de l'arithmétique des entiers naturels et permettent de dénombrer en préservant la propriété de bon ordre. Ils serviront de base à la construction des cardinaux infinis. 
 \subsection{Construction des ordinaux} 
 
 \begin{definition}[Bon ordre]
-	Soit \( (E,\le) \) un ensemble muni d'une relation d'ordre. \( \le \) est un bon ordre si toute partie non vide de \( E \) posséde un élément minimal par rapport à \( \le \). Dans ce cas on appelle \( (E,\le) \) un ensemble \textit{bien ordonné}.	
+	Soit \( (E,\le) \) un ensemble muni d'une relation d'ordre totale. \( \le \) est un bon ordre si toute partie non vide de \( E \) posséde un élément minimal par rapport à \( \le \). Dans ce cas on appelle \( (E,\le) \) un ensemble \textit{bien ordonné}.	
 \end{definition}
 
 \begin{definition}[Segment initial]
@@ -287,6 +289,7 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 \end{proof}
 
 \par On cite un résultat simialire au paradoxe de Russell (voir \cite{dumoncel2002philosophie} pour une discussion sur le sujet) sur les ensembles : on ne peut pas construire un ensemble qui contient tout les ordinaux (pas seulement les ordinaux \( \underline{n} \)).
+
 \begin{proposition}[Paradoxe de Burlati-Forti]
 	Il n'existe pas d'ensemble contenant tout les ordinaux.
 \end{proposition}
@@ -296,17 +299,31 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	Alors \( \bigcup \Omega \) est un ordinal qui vérifie : \( \forall \alpha \in \Omega, \alpha \le \bigcup \Omega \). 
 
 	Donc \( \bigcup\Omega < S(\bigcup\Omega) \le \bigcup\Omega \), ce qui implique \( \bigcup\Omega \in \bigcup\Omega \), or cela contredit 2.1.7.
-\end{proof}\begin{definition}[Ordinal omega]
-	On définit l'ordinal \( \omega \) comme la borne supérieure des ordinaux \( \underline{n} \) :
-\begin{equation*}
-	\omega \coloneqq \{\underline{0}, \underline{1}, \underline{2}, \ldots\}
-\end{equation*}	
-\end{definition}
-
+\end{proof}
 \par On distingue désormais deux familles d'ordinaux.
 \begin{definition}[Ordinal successeur, limite]
 	Soit \( \alpha \) un ordinal non nul. \( \alpha \) est dit successeur s'il existe \( \beta \) vérifiant \( \alpha = S(\beta) \), et limite si on a \( \alpha = \bigcup \alpha \).
 \end{definition}
+
+\begin{definition}[Ensemble récurrent]
+	Un ensemble est dit récurrent s'il contient \( \emptyset \) et est clos par l'application \( S : x \mapsto x \cup \{x\} \).
+\end{definition}
+\begin{definition}[Ordinal omega]
+	On définit l'ordinal \( \omega \) comme le plus petit ordinal récurrent.
+\end{definition}
+
+\begin{corollary}
+	Pour tout \( n \in \mathbb{N} \), on a \( \underline{n} < \omega \).
+\end{corollary}
+
+\begin{proof}
+	L'ensemble vide n'est pas récurrent, et on peut montrer par récurrence qu'aucun ordinal \( \underline{n} \) n'est récurrent.
+\end{proof}
+
+\par Par conséquent, on a :
+\begin{equation*}
+	\omega = \{\underline{0}, \underline{1}, \underline{2}, \ldots\}
+\end{equation*}
 
 \par On représente la construction obtenue jusqu'ici : la suite des ordinaux où \( \omega \) est un ordinal limite.
 \begin{center}
@@ -339,7 +356,7 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	Or la suite des ordinaux ne forme pas un ensemble d'après le paradoxe de Burlati-Forti, donc il ne reste que le dernier cas. Un segment initial de la suite des ordinaux est un ordinal par transitivité. Par unicité des segments initiaux, l'ordinal obtenu est unique, d'où le résultat. 
 \end{proof}
 
-\par On définit principalement trois opérations (que l'on étendra aux cardinaux infinis) : l'addition, la multiplication et l'exponentiation ordinale. On admet le principe d'induction sur les ordinaux, qui s'étend naturellement de celui sur les entiers.
+\par On définit principalement trois opérations (que l'on étendra aux cardinaux infinis) : l'addition, la multiplication et l'exponentiation ordinale. 
 
 \begin{proposition}[Addition]
 	Soit \( \alpha \) et \( \beta \) deux ordinaux. 
@@ -379,21 +396,29 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	Pour tout ordinal infini \( \alpha \) il existe une bijection de \( \alpha \) sur \( \alpha + 1 \), ce qui donne le résultat. Par exemple, on a \( |\omega + 1| = \omega \). Il est important de bien noter que cette bijection ne conserve pas l'ordre (n'est pas un isomorphisme sur l'ordre). \cite{gowers2010ordinals}
 \end{proof}
 
+\begin{corollary}
+	Pout tout ensemble \( E \), on a \( |E| < |\mathcal{P}(E)| \).
+\end{corollary}
+\begin{proof}
+	C'est une conséquence directe du théorème de Cantor.
+\end{proof}
+\par On énumère déosormais les cardinaux infinis à l'aide des résultat suivant.
 
+\begin{proposition}[La suite des cardinaux n'est pas bornée]
+	Pour tout ensemble infini \( E \), il existe un plus petit ordinal \( \Theta \) ne s'injectant pas dans \( E \) tel que \( \Theta \) s'injecte dans \( \mathcal{P(\mathcal{P}}(E \times E))\). De plus \( \Theta \) est un cardinal.
+\end{proposition}
+\begin{proof}[Idée générale de la démonstration]
+	A compléter
+\end{proof}
 
+\begin{proposition}[Successeur]
+	Pour tout cardinal infini \( \kappa \), il existe un plus petit cardinal infini \( \Theta \) tel que \( \kappa < \Theta \).
+\end{proposition}
+\begin{proof}
+	D'après la proposition précédente, \( \Theta \) ne s'injecte pas dans \( \kappa \) et est un cardinal. Tout cardinal \( \mu < \kappa \) s'injecte dans \( \kappa \) donc \( \kappa < \Theta \). Si \( \lambda \) vérifie \( \lambda <  \Theta \) alors \( \lambda \le \kappa \). Donc \( \Theta \) est le plus petit cardinal supérieur à \( \kappa \).  
+\end{proof}
 
 \clearpage
 \printbibliography
-
-
-
-
-
-
-
-
-
-
-
 
 \end{document}
