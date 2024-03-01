@@ -5,19 +5,18 @@
 \usepackage{amsfonts} % Include font for math symbols
 \usepackage{amsthm} % Change definition layout
 \usepackage{enumitem} % Modern item enumeration
-\usepackage{hyperref} % Select links in table of contents
-\hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black,
-}
 \usepackage{csquotes} % Typeset quoted texts in French correctly
 \usepackage[backend=biber]{biblatex} % For bibliography usage
 \usepackage{tikz} % Draw pictures and illustrate examples
 \addbibresource{references.bib}
-
+\usepackage{hyperref} % Select links in table of contents
+\hypersetup{ 
+    colorlinks,
+    citecolor=blue,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue, 
+}
 
 \theoremstyle{definition}
 \newtheorem{definition}[subsubsection]{Définition}
@@ -35,6 +34,9 @@
 
 \theoremstyle{plain}
 \newtheorem{remark}[subsubsection]{Remarque}
+
+\theoremstyle{plain}
+\newtheorem*{notation}{Notation}
 
 \title{UE Projet Tutoré : Ensembles de cardinal infini}
 \author{Auteur :\\
@@ -59,6 +61,7 @@
 \end{abstract}
 
 \tableofcontents
+\clearpage
 \section{Ensembles infinis et dénombrabilité}
 \subsection{Bijections et dénombrabilité}
 
@@ -170,8 +173,7 @@ D'après l'argument diagonal de Cantor on obtient \( |\mathbb{R}| > |\mathbb{N}|
 \clearpage
 \section{Ordinaux}
 
-Dans ce chapitre, on se basera principalement sur \cite{dehornoy2017théorie}.
-On commence par introduire quelques définitions.
+Dans ce chapitre et le suivant, on se basera principalement sur \cite{dehornoy2017théorie}. Les ordinaux constituent une extension de l'arithmétique des entiers naturels et permettent de dénombrer en préservant la propriété de bon ordre (voir ci-dessus). Ils serviront de base à la construction des cardinaux infinis. 
 \subsection{Construction des ordinaux} 
 
 \begin{definition}[Bon ordre]
@@ -179,7 +181,7 @@ On commence par introduire quelques définitions.
 \end{definition}
 
 \begin{definition}[Segment initial]
-	Si \( (E,\le) \) est un ensemble bien ordonné et \( y \in E\), on appelle \textit{segment initial} de \( (A,\le) \) déterminé par \( y \) l'ensemble suivant :
+	Si \( (E,\le) \) est un ensemble bien ordonné et \( y \in E\), on appelle \textit{segment initial} de \( (E,\le) \) déterminé par \( y \) l'ensemble suivant :
 	\begin{equation*}
 		Init(y) \coloneqq \{ x \in E \mid x \le y \}
 	\end{equation*}
@@ -327,10 +329,12 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 \par Une conséquence importante de ce résultat est un théorème qui servira de base à la construction des cardinaux infinis : on peut exhiber un représentant unique pour chaque ensemble bien ordonné.
 
 \begin{theorem}[Comparaison]
-	Tout ensemble bien ordonné \( (E,<) \) est isomorphe à un unique ordinal
+	Tout ensemble bien ordonné \( (E,<) \) est isomorphe à un unique ordinal.
 \end{theorem}
 \begin{proof}
-	Soit \( ((E,<) \) un ensemble bien ordonné. D'après la Proposition 2.1.3, soit \( (E,<) \) est isomorphe à la suite des ordinaux, soit la suite des ordinaux est isomorphe à un segment initial de \( (E,<) \) ou \( (E,<) \) est isomorphe à un segment initial de la suite des ordinaux.
+	Soit \( (E,<) \) un ensemble bien ordonné. 
+	
+	D'après la Proposition 2.1.3, soit \( (E,<) \) est isomorphe à la suite des ordinaux, soit la suite des ordinaux est isomorphe à un segment initial de \( (E,<) \), ou bien \( (E,<) \) est isomorphe à un segment initial de la suite des ordinaux.
 
 	Or la suite des ordinaux ne forme pas un ensemble d'après le paradoxe de Burlati-Forti, donc il ne reste que le dernier cas. Un segment initial de la suite des ordinaux est un ordinal par transitivité. Par unicité des segments initiaux, l'ordinal obtenu est unique, d'où le résultat. 
 \end{proof}
@@ -347,6 +351,36 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 
 \clearpage
 \section{Cardinaux infinis}
+\subsection{Definitions et généralités}
+
+\par Avec l'axiome du choix, on peut établir une bijection entre un ensemble et un ordinal.
+
+\begin{definition}[Cardinal]
+	Un cardinal est un ordinal qui n'est en bijection avec aucun ordinal plus petit que lui-même.
+\end{definition}
+
+\begin{proposition}[Cardinalité]
+	Tout ensemble est en bijection avec un unique cardinal.
+\end{proposition}
+\begin{proof}	
+	\textit{Existence :} D'après le théorème de Zermolo, pour tout ensemble \( E \), il existe un bon ordre \( < \) sur \( E \), et d'après le théorème de comparaison il existe un unique ordinal \( \alpha \) tel que \( (E,<) \) est isomorphe à \( (\alpha,\in) \). Soit \( \kappa \) le plus petit des ordinaux en bijection avec \( \alpha \). Alors \( \kappa \) est un cardinal par construction en bijection avec lui-même. 
+
+	\textit{Unicité : } Soit \( \kappa, \mu \) deux cardinaux distincts. Alors par bon ordre strict l'un des deux est plus grand que l'autre, donc il ne peut pas y avoir de bijection entre les deux.
+\end{proof}
+
+\begin{corollary}
+	Un cardinal infini est un ordinal limite.
+\end{corollary}
+\begin{notation}
+	On note \( |E| \) l'unique cardinal \( \kappa \) tel que E est en bijection avec \( \kappa \).
+\end{notation}
+
+\begin{proof}
+	Pour tout ordinal infini \( \alpha \) il existe une bijection de \( \alpha \) sur \( \alpha + 1 \), ce qui donne le résultat. Par exemple, on a \( |\omega + 1| = \omega \). Il est important de bien noter que cette bijection ne conserve pas l'ordre (n'est pas un isomorphisme sur l'ordre). \cite{gowers2010ordinals}
+\end{proof}
+
+
+
 
 \clearpage
 \printbibliography
