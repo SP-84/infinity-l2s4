@@ -419,6 +419,24 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 \end{proof}
 
 \clearpage
+
+\begin{definition}
+Pour tout ordinal \( \alpha \), on note \( \aleph_{\alpha} \) le cardinal infini \textit{aleph alpha} tel que :
+	\begin{enumerate}[label = (\roman*) ]
+		\item \( \aleph_{0} \coloneqq \omega \);
+		\item \( \aleph_{\alpha + 1} \coloneqq \aleph_{\alpha}^{+} \);
+		\item \( \aleph_{\lambda} \coloneqq \sup_{\alpha < \lambda} \aleph_{\alpha} \) pour \( \lambda \) un ordinal limite.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Enumeration canonique]
+	Tout cardinal infini \( \kappa \) est un aleph
+\end{proposition}
+
+\begin{proof}
+	On montre par récurrence sur \( \kappa \) qu'il existe un ordinal \( \alpha \) tel que \( \kappa = \aleph_{\alpha} \).
+\end{proof}
+\clearpage
 \printbibliography
 
 \end{document}
