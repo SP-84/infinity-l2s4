@@ -200,8 +200,9 @@ Dans ce chapitre et le suivant, on se basera principalement sur \cite{dehornoy20
 \begin{proof}[Idée générale de la démonstration]
 	On définit une application :
 	\begin{align*}
-		F &: A \rightarrow B \\
-		a &\mapsto F(a) = b \Leftrightarrow \text{Init(a) est isomorphe à Init(b)}
+		F : A &\rightarrow B \\
+		a &\mapsto F(a) = b \\
+			       &\Leftrightarrow \text{Init(a) est isomorphe à Init(b)}
 	\end{align*}
 	On montre que F est strictement croissante et que le domaine de F est clos par minorant dans \( (A,<) \). Réciproquement, on montre que l'image de F est close par minorant dans \( (B,\preceq) \) pour obtenir que F est un isomorphisme de son domaine sur son image.
 \end{proof}
@@ -436,6 +437,30 @@ Pour tout ordinal \( \alpha \), on note \( \aleph_{\alpha} \) le cardinal infini
 \begin{proof}
 	On montre par récurrence sur \( \kappa \) qu'il existe un ordinal \( \alpha \) tel que \( \kappa = \aleph_{\alpha} \).
 \end{proof}
+\clearpage
+
+\section{Applications des ordinaux et cardinaux infinis}
+\subsection{Applications en Analyse}
+
+\par La formalisation des ordinaux permet de donner des preuves alternatives à certains problèmes classiques d'analyse.
+
+\begin{proposition}
+	L'ensemble image d'une fonction continue sur l'intervalle fermé compact \( [0,1] \) est borné.
+\end{proposition}
+
+\begin{proof}
+	On montre d'abord que tout les sous-ensembles bien ordonnés de \( [0,1] \) sont dénombrables. Soit \( E_{\alpha} \) un sous-ensemble de \( [0,1] \) bien ordonné indexé par un ordinal \( \alpha \). Alors l'application :
+\begin{align*}	
+	g : \alpha &\rightarrow E_{\alpha} \\
+	x &\mapsto e_{x}
+\end{align*}
+est un isomorphisme qui préserve l'ordre. Donc pour \( x < y \), il n'y a pas d'élément entre \( e_{x} \) et \( e_{y} \). L'intervalle \( [e_{x},e_{y}] \) contient un nombre fini de rationnels distincts, et on peut en déduire que \( E_{\alpha} \) est dénombrable.
+
+Si f est continue sur \( [0,1] \), il existe \( s > x \) tel que f est bornée sur \( [0,s] \). L'intervalle \( (x,s] \) contient un nombre fini de rationnels. On définit \( y \) tel que \( e_{y} \) où \( y \) est un ordinal succeseur de x tel que f est bornée sur \( [0,q] \) avec q le premier rationnel successeur. Sinon \( y \) est un ordinal limite \( \sup_{x<y} e_{x} \). 
+
+Alors f est bornée jusqu'à \( e_{y} \). Tant que \( y \neq 1 \), cette construction définit un isomorphisme unique qui préserve l'ordre entre \( E_{\alpha} \) et \( [0,1] \).
+\end{proof}
+
 \clearpage
 \printbibliography
 
