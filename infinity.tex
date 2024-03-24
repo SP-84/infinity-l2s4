@@ -55,10 +55,11 @@
 \maketitle
 \begin{abstract}
 	Nous étudierons quelques propriétés des ensembles infinis et de combinatoire infine.
-	Dans un premier temps nous établirons l'existence d'ensembles infinis et indénombrables en prouvant l'indénombrabilité de \( \mathbb{R} \). 
-	Nous construirons ensuite les ordinaux dits de Von Neumann, qui nous permettrons d'aborder (très brièvement) l'étude des cardinaux infinis.
-	Dans tout ce qui suit, on se place dans le modèle axiomatique ZFC où l'on précisera quand on utilise AC. 
+	Dans un premier temps nous établirons l'existence d'ensembles infinis et indénombrables, en prouvant l'indénombrabilité de \( \mathbb{R} \) à l'aide de l'argument diagnonal de Cantor. 
+	Nous construirons ensuite les ordinaux (modèle de von Neumann), qui nous permettrons d'aborder très brièvement l'étude des cardinaux infinis. Enfin, nous citerons quelques applications de la formalisation des ordinaux.
+	Dans tout ce qui suit, on se place dans le modèle axiomatique ZFC où l'on précisera quand on utilise l'axiome du choix, noté AC. 
 \end{abstract}
+
 
 \tableofcontents
 \clearpage
@@ -113,7 +114,7 @@ On rappelle des propriétés utilisées dans toute la suite pour comparer deux e
 	\end{equation*}
 	où \( i_{nk} \in [\![0,9]\!] \).
 
-	On considère le tableau à double entrée formé avec \( i_{1}, i_{2}, \ldots, i_{n}, \ldots \) (INSERER TABLEAU)
+	On considère le tableau à double entrée formé avec \( i_{1}, i_{2}, \ldots, i_{n}, \ldots \) 
 
 	Soit \( l_{n} \) le plus petit entier dans \( \{1,2\}\) tel que \( l_{n} \neq i_{nk}\). 
 
@@ -151,7 +152,7 @@ On rappelle des propriétés utilisées dans toute la suite pour comparer deux e
 	Puisque \( \mathbb{C} \) est isomorphe à \( \mathbb{R}^{2} \), on a \( |\mathbb{C}| = |\mathbb{R}^{2}| = |\mathbb{R}| \).
 \end{corollary}
 
-\par On peut étendre la preuve ci-dessus à un nombre fini de coordonnées et obtenir que \( |\mathbb{R}| = |\mathbb{R}^{n}| \) pour \( n \in \mathbb{N} \). \cite{dumoncel2002philosophie}
+\par On peut étendre la preuve ci-dessus à un nombre fini de coordonnées et obtenir que \( |\mathbb{R}| = |\mathbb{R}^{n}| \) pour \( n \in \mathbb{N} \). 
 On établit ainsi l'existence de deux cardinaux infinis distincs : celui de \( \mathbb{N} \) et celui de \( \mathbb{R} \). Avec la proposition suivante, on va voir qu'il en existe une infinité.
 
 \begin{remark}
@@ -211,6 +212,8 @@ Dans ce chapitre et le suivant, on se basera principalement sur \cite{dehornoy20
 	\begin{equation}\label{eq:Tr} \tag{Tr}
 		x \in a \in E \implies x \in E 
 	\end{equation}
+
+	\( E \) est donc un \textit{ensemble pur} particulier.  \cite{nlab:pure_set} \cite{nlab:transitive_set} 
 \end{definition}
 
 \begin{lemma}[Stabilité par opérations ensemblistes]
@@ -289,7 +292,7 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	Pour tout \( \alpha \in E \) on a \( \alpha \subseteq e \), donc \( \alpha \le e \). Si \( \beta \) est un minorant strict de \( e \) on a \( \beta < e \) et \( \beta \in \bigcup E \). On a donc un \( \alpha \) dans la réunion tel que \( \beta \in \alpha \) et \( \beta < \alpha \) où \( \beta \) n'est pas un majorant de \( E \). Ainsi \( e \) est le plus petit majorant de \( E \).
 \end{proof}
 
-\par On cite un résultat simialire au paradoxe de Russell (voir \cite{dumoncel2002philosophie} pour une discussion sur le sujet) sur les ensembles : on ne peut pas construire un ensemble qui contient tout les ordinaux (pas seulement les ordinaux \( \underline{n} \)).
+\par On cite un résultat simialire au paradoxe de Russell sur les ensembles : on ne peut pas construire un ensemble qui contient tout les ordinaux (pas seulement les ordinaux \( \underline{n} \)).
 
 \begin{proposition}[Paradoxe de Burlati-Forti]
 	Il n'existe pas d'ensemble contenant tout les ordinaux.
@@ -357,21 +360,17 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	Or la suite des ordinaux ne forme pas un ensemble d'après le paradoxe de Burlati-Forti, donc il ne reste que le dernier cas. Un segment initial de la suite des ordinaux est un ordinal par transitivité. Par unicité des segments initiaux, l'ordinal obtenu est unique, d'où le résultat. 
 \end{proof}
 
-\par On définit principalement trois opérations (que l'on étendra aux cardinaux infinis) : l'addition, la multiplication et l'exponentiation ordinale. 
-
-\begin{proposition}[Addition]
-	Soit \( \alpha \) et \( \beta \) deux ordinaux. 
-	On définit \( \alpha + \beta \) comme l'unique ordinal \( \gamma \) tel que \( (\gamma,\in) \) est isomorphe à \( (\alpha,\in) + (\beta,\in) \).
-\end{proposition}
-\begin{proof}
-	
-\end{proof}
+\par Enfin, on peut étendre les opérations d'addition, de multiplication et d'exponentiation des entiers aux ordinaux avec quelques modifications supplémentaires : l'addition et la multiplication ne sont pas commutatives par exemple.
 
 \clearpage
 \section{Cardinaux infinis}
 \subsection{Definitions et généralités}
 
 \par Avec l'axiome du choix, on peut établir une bijection entre un ensemble et un ordinal.
+
+\begin{remark}
+	Dans cette section, nous définirons la suite des cardinaux infinis à l'aide de AC. Cela permet en particulier de conserver l'ordre total sur les cardinaux, puisque AC implique qu'un ordinal est un cardinal. Sans AC, on peut conserver une relation d'ordre partielle, ce qui rend les relations de comparaison entre cardinaux infinis plus complexes à manipuler. On ne développera pas ici cette théorie (voir \cite{jech1973axiom} chapitre 11 p.156 pour une exposition plus complète du sujet).
+\end{remark}
 
 \begin{definition}[Cardinal]
 	Un cardinal est un ordinal qui n'est en bijection avec aucun ordinal plus petit que lui-même.
@@ -419,8 +418,6 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	D'après la proposition précédente, \( \Theta \) ne s'injecte pas dans \( \kappa \) et est un cardinal. Tout cardinal \( \mu < \kappa \) s'injecte dans \( \kappa \) donc \( \kappa < \Theta \). Si \( \lambda \) vérifie \( \lambda <  \Theta \) alors \( \lambda \le \kappa \). Donc \( \Theta \) est le plus petit cardinal supérieur à \( \kappa \).  
 \end{proof}
 
-\clearpage
-
 \begin{definition}
 Pour tout ordinal \( \alpha \), on note \( \aleph_{\alpha} \) le cardinal infini \textit{aleph alpha} tel que :
 	\begin{enumerate}[label = (\roman*) ]
@@ -430,7 +427,7 @@ Pour tout ordinal \( \alpha \), on note \( \aleph_{\alpha} \) le cardinal infini
 	\end{enumerate}
 \end{definition}
 
-\begin{proposition}[Enumeration canonique]
+\begin{proposition}[Enumération canonique]
 	Tout cardinal infini \( \kappa \) est un aleph
 \end{proposition}
 
@@ -442,7 +439,7 @@ Pour tout ordinal \( \alpha \), on note \( \aleph_{\alpha} \) le cardinal infini
 \section{Applications des ordinaux et cardinaux infinis}
 \subsection{Applications en Analyse}
 
-\par La formalisation des ordinaux permet de donner des preuves alternatives à certains problèmes classiques d'analyse.
+\par La formalisation des ordinaux permet de donner des preuves alternatives à certains problèmes d'analyse. On expose ici une preuve issue de \cite{gowers2010ordinals}.
 
 \begin{proposition}
 	L'ensemble image d'une fonction continue sur l'intervalle fermé compact \( [0,1] \) est borné.
@@ -456,12 +453,19 @@ Pour tout ordinal \( \alpha \), on note \( \aleph_{\alpha} \) le cardinal infini
 \end{align*}
 est un isomorphisme qui préserve l'ordre. Donc pour \( x < y \), il n'y a pas d'élément entre \( e_{x} \) et \( e_{y} \). L'intervalle \( [e_{x},e_{y}] \) contient un nombre fini de rationnels distincts, et on peut en déduire que \( E_{\alpha} \) est dénombrable.
 
-Si f est continue sur \( [0,1] \), il existe \( s > x \) tel que f est bornée sur \( [0,s] \). L'intervalle \( (x,s] \) contient un nombre fini de rationnels. On définit \( y \) tel que \( e_{y} \) où \( y \) est un ordinal succeseur de x tel que f est bornée sur \( [0,q] \) avec q le premier rationnel successeur. Sinon \( y \) est un ordinal limite \( \sup_{x<y} e_{x} \). 
+Si f est continue sur \( [0,1] \), il existe \( s > x \) tel que f est bornée sur \( [0,s] \). L'intervalle \( ]x,s] \) contient un nombre fini de rationnels. On définit \( y \) tel que \( e_{y} \) où \( y \) est un ordinal succeseur de x tel que f est bornée sur \( [0,q] \) avec q le premier rationnel successeur. Sinon \( y \) est un ordinal limite où \( e_y = \sup_{x<y} e_{x} \). 
 
 Alors f est bornée jusqu'à \( e_{y} \). Tant que \( y \neq 1 \), cette construction définit un isomorphisme unique qui préserve l'ordre entre \( E_{\alpha} \) et \( [0,1] \).
 \end{proof}
 
+\subsection{Applications en théorie des jeux combinatoires}
+
+\par En théorie des jeux combinatoires, on modélise un jeu sans élément aléatoire à deux personnes \( G \) comme une paire ordonnée \( G=(L,R) \) possédant une condition terminale, où \( L \) et \( R \) sont des ensembles, dont les éléments désignent les options que chque joueur possède à une position donnée. Les ordinaux, munis d'une nouvelle opération d'addition et de multiplication, servent à modéliser les tas dans les jeux de Nim. Un tas d'allumettes dans un jeu de Nim est alors appelé \( nimber \), et est un ordinal particulier. 
+
+Il existe une classification des jeux impartiaux d'après Sprague-Grundy, où chque jeu impartial est équivalent à un tas fini dans un jeu de Nim, avec une stratégie triviale de réussite. Mais cela ne rend pas chque jeu impartial facile à analyser, car il faut trouver quel nimber est équivalent au jeu en question. \cite{schleicher2005introduction}
+
+Plus généralement, Conway utilise dans \cite{conway2000onag} la théorie des nombres surréels (les réels et les nombres transfinis) et les ordinaux afin d'analyser certains jeux. 
 \clearpage
-\printbibliography
+\printbibliography[heading=bibintoc]
 
 \end{document}
