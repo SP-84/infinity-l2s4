@@ -54,7 +54,7 @@
 
 \maketitle
 \begin{abstract}
-	Nous étudierons quelques propriétés des ensembles infinis et de combinatoire infine.
+	Nous étudierons quelques propriétés des ensembles infinis. 
 	Dans un premier temps nous établirons l'existence d'ensembles infinis et indénombrables, en prouvant l'indénombrabilité de \( \mathbb{R} \) à l'aide de l'argument diagnonal de Cantor. 
 	Nous construirons ensuite les ordinaux (modèle de von Neumann), qui nous permettrons d'aborder très brièvement l'étude des cardinaux infinis. Enfin, nous citerons quelques applications de la formalisation des ordinaux.
 	Dans tout ce qui suit, on se place dans le modèle axiomatique ZFC où l'on précisera quand on utilise l'axiome du choix, noté AC. 
@@ -87,17 +87,17 @@ On rappelle des propriétés utilisées dans toute la suite pour comparer deux e
 \
 \end{definition}
 
-\begin{proposition}[Bijections]
-	\( \mathbb{N} \), \( \mathbb{Z} \) et \( \mathbb{Q} \) sont en bijection et sont donc dénombrables. \cite{tao2014analysis}
+\begin{proposition}[Ensembles dénombrables]
+	\( \mathbb{N} \), \( \mathbb{Z} \) et \( \mathbb{Q} \) sont dénombrables. \cite{tao2014analysis}
 \end{proposition}
 \begin{proof}
-	Une bijection explicite entre \( \mathbb{N} \) et \( \mathbb{Z} \) est donnée par :
-	\[
-		\begin{cases}
-			2n, & \mapsto n \\
-			2n + 1 & \mapsto -n
-		\end{cases}
-	\]
+	On se base sur la construction axiomatique de Peano des entiers naturels. 
+	Soit \( n \in \mathbb{N} \), alors \( S : n \mapsto n+1 \) la fonction successeur qui assigne à chaque entier naturel son successeur montre que l'on peut énumérer \( \mathbb{N} \).
+	
+	\par Ensuite, une bijection explicite entre \( \mathbb{N} \) et \( \mathbb{-N} \) est donnée par \( f : n \mapsto -n \). Puisque \( \mathbb{Z} = \mathbb{-N} \cup \mathbb{N} \), et que l'union de deux ensembles dénombrables est à nouveau dénombrable, alors \( \mathbb{Z} \) est dénombrable.
+	
+	\par Soit \( g : \mathbb{Z} \times \mathbb{Z} \setminus \{0\} \mapsto \mathbb{Q} \) telle que \( g(a,b) \coloneqq \frac{a}{b} \). g est bien définie, et on a \( g(\mathbb{Z} \times \mathbb{Z} \setminus \{0\} ) = \mathbb{Q} \). En particulier, le produit cartésien de deux ensembles dénombrables est à nouveau dénombrable, donc \( \mathbb{Q} \) est dénombrable.
+
 \end{proof}
 
 \subsection{Indénombrabilité de l'ensemble des réels et implications}
@@ -148,16 +148,17 @@ On rappelle des propriétés utilisées dans toute la suite pour comparer deux e
 	Puisque ni \( x \) ni \( y \) ne forment des suites de décimales composées uniquement de zéros, on trouve qu'il en est de même pour la représentation décimale et non terminalle de r. 
 	D'autre part, on peut déduire l'expression de \( x \) et de \( y \) à partir de celle de \( r \) directement, ainsi l'application formée est bijective.
 \end{proof}
+
+\begin{remark}
+	Il est aussi possible de construire des applications continues, surjectives mais pas injectives entre \( \mathbb{R} \) et \( \mathbb{R}^{2} \) comme le montre l'exemple des courbes de Peano. \cite{peano1890curve}
+\end{remark}
+
 \begin{corollary}
 	Puisque \( \mathbb{C} \) est isomorphe à \( \mathbb{R}^{2} \), on a \( |\mathbb{C}| = |\mathbb{R}^{2}| = |\mathbb{R}| \).
 \end{corollary}
 
 \par On peut étendre la preuve ci-dessus à un nombre fini de coordonnées et obtenir que \( |\mathbb{R}| = |\mathbb{R}^{n}| \) pour \( n \in \mathbb{N} \). 
 On établit ainsi l'existence de deux cardinaux infinis distincs : celui de \( \mathbb{N} \) et celui de \( \mathbb{R} \). Avec la proposition suivante, on va voir qu'il en existe une infinité.
-
-\begin{remark}
-	Il est aussi possible de construire des applications continues, surjectives mais pas injectives entre \( \mathbb{R} \) et \( \mathbb{R}^{2} \) comme le montre l'exemple des courbes de Peano. \cite{peano1890curve}
-\end{remark}
 \begin{proposition}[théorème de Cantor]
 	Soit \( A \) un ensemble. Alors l'ensemble des parties de A et \( A \) ne sont pas en bijection.
 \end{proposition} 
@@ -171,7 +172,7 @@ On établit ainsi l'existence de deux cardinaux infinis distincs : celui de \( \
 	Les ensembles \( \mathbb{N}, \mathcal{P}(\mathbb{N}), \mathcal{P}(\mathcal{P}(\mathbb{N})), \ldots \) sont deux à deux non en bijection.
 \end{corollary}
 
-D'après l'argument diagonal de Cantor on obtient \( |\mathbb{R}| > |\mathbb{N}| \), ce qui soulève la question de \textit{l'hypothèse du continu} : tout sous-ensemble infini de \( \mathbb{R} \) est-il soit en bijection avec \( \mathbb{N} \), ou avec \( \mathbb{R} \)? Cette question, ainsi que le Corollaire 1.2.5 on motivé le développement de la théorie des ensembles.
+D'après l'argument diagonal de Cantor on obtient \( |\mathbb{R}| > |\mathbb{N}| \), ce qui soulève la question de \textit{l'hypothèse du continu} : tout sous-ensemble infini de \( \mathbb{R} \) est-il soit en bijection avec \( \mathbb{N} \), ou avec \( \mathbb{R} \)? Cette question célèbre a notemment motivé le développement de la théorie des ensembles.
 
 \clearpage
 \section{Ordinaux}
@@ -346,6 +347,9 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 \begin{proposition}[Induction ordinale]
 	Le principe de récurrence définit sur les entiers peut s'étendre aux ordinaux \( \underline{n} \).
 \end{proposition}
+\begin{proof}
+	On étend le principe de récurrence connu sur \( \mathbb{N} \). La preuve étant plutôt longue, elle ne sera pas exposée ici, le lecteur intéréssé pourra se référer à \cite{dehornoy2017théorie} pour vérifer que cela fonctionne.
+\end{proof}
 
 \par Une conséquence importante de ce résultat est un théorème qui servira de base à la construction des cardinaux infinis : on peut exhiber un représentant unique pour chaque ensemble bien ordonné.
 
@@ -393,7 +397,7 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 \end{notation}
 
 \begin{proof}
-	Pour tout ordinal infini \( \alpha \) il existe une bijection de \( \alpha \) sur \( \alpha + 1 \), ce qui donne le résultat. Par exemple, on a \( |\omega + 1| = \omega \). Il est important de bien noter que cette bijection ne conserve pas l'ordre (n'est pas un isomorphisme sur l'ordre). \cite{gowers2010ordinals}
+	Pour tout ordinal infini \( \alpha \) il existe une bijection de \( \alpha \) sur \( \alpha + 1 \), ce qui donne le résultat. Par exemple, on a \( |\omega + 1| = \omega \). Il est important de mentionner que cette bijection ne préserve pas l'ordre. \cite{gowers2010ordinals}
 \end{proof}
 
 \begin{corollary}
@@ -402,7 +406,10 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 \begin{proof}
 	C'est une conséquence directe du théorème de Cantor.
 \end{proof}
-\par On énumère déosormais les cardinaux infinis à l'aide des résultat suivant.
+
+\subsection{Alephs}
+
+\par On énumère désormais les cardinaux infinis à l'aide des résultat suivant.
 
 \begin{proposition}[La suite des cardinaux n'est pas bornée]
 	Pour tout ensemble infini \( E \), il existe un plus petit ordinal \( \Theta \) ne s'injectant pas dans \( E \) tel que \( \Theta \) s'injecte dans \( \mathcal{P(\mathcal{P}}(E \times E))\). De plus \( \Theta \) est un cardinal.
@@ -423,21 +430,27 @@ Pour tout ordinal \( \alpha \), on note \( \aleph_{\alpha} \) le cardinal infini
 	\begin{enumerate}[label = (\roman*) ]
 		\item \( \aleph_{0} \coloneqq \omega \);
 		\item \( \aleph_{\alpha + 1} \coloneqq \aleph_{\alpha}^{+} \);
-		\item \( \aleph_{\lambda} \coloneqq \sup_{\alpha < \lambda} \aleph_{\alpha} \) pour \( \lambda \) un ordinal limite.
+		\item \( \aleph_{\lambda} \coloneqq \sup_{\alpha < \lambda} \aleph_{\alpha} \) où \( \lambda \) est un ordinal limite.
 	\end{enumerate}
 \end{definition}
 
 \begin{proposition}[Enumération canonique]
-	Tout cardinal infini \( \kappa \) est un aleph
+	Tout cardinal infini \( \kappa \) est un aleph.
 \end{proposition}
 
 \begin{proof}
-	On montre par récurrence sur \( \kappa \) qu'il existe un ordinal \( \alpha \) tel que \( \kappa = \aleph_{\alpha} \).
+La suite des alephs définie ci-dessus est un suite de cardinaux strictement croissante. On montre par récurrence sur \( \kappa \) qu'il existe un ordinal \( \alpha \) tel que \( \kappa = \aleph_{\alpha} \), c'est-à-dire que la suite des \( \aleph_{\alpha} \) est surjective.
+
+\par Si \( \kappa = \omega \), on a \( \kappa = \aleph_{0} \).
 \end{proof}
+
+
+\subsection{Nombres de Beth}
+
 \clearpage
 
-\section{Applications des ordinaux et cardinaux infinis}
-\subsection{Applications en Analyse}
+\section{Applications}
+\subsection{Applications en analyse}
 
 \par La formalisation des ordinaux permet de donner des preuves alternatives à certains problèmes d'analyse. On expose ici une preuve issue de \cite{gowers2010ordinals}.
 
@@ -456,6 +469,14 @@ est un isomorphisme qui préserve l'ordre. Donc pour \( x < y \), il n'y a pas d
 Si f est continue sur \( [0,1] \), il existe \( s > x \) tel que f est bornée sur \( [0,s] \). L'intervalle \( ]x,s] \) contient un nombre fini de rationnels. On définit \( y \) tel que \( e_{y} \) où \( y \) est un ordinal succeseur de x tel que f est bornée sur \( [0,q] \) avec q le premier rationnel successeur. Sinon \( y \) est un ordinal limite où \( e_y = \sup_{x<y} e_{x} \). 
 
 Alors f est bornée jusqu'à \( e_{y} \). Tant que \( y \neq 1 \), cette construction définit un isomorphisme unique qui préserve l'ordre entre \( E_{\alpha} \) et \( [0,1] \).
+
+\begin{proposition}
+	Toute suite de Goodstein converge vers 0
+\end{proposition}
+
+\begin{proof}[Idée générale de la preuve]
+	Voir \cite{dehornoy2017théorie}
+\end{proof}
 \end{proof}
 
 \subsection{Applications en théorie des jeux combinatoires}
@@ -465,6 +486,14 @@ Alors f est bornée jusqu'à \( e_{y} \). Tant que \( y \neq 1 \), cette constru
 Il existe une classification des jeux impartiaux d'après Sprague-Grundy, où chque jeu impartial est équivalent à un tas fini dans un jeu de Nim, avec une stratégie triviale de réussite. Mais cela ne rend pas chque jeu impartial facile à analyser, car il faut trouver quel nimber est équivalent au jeu en question. \cite{schleicher2005introduction}
 
 Plus généralement, Conway utilise dans \cite{conway2000onag} la théorie des nombres surréels (les réels et les nombres transfinis) et les ordinaux afin d'analyser certains jeux. 
+
+\subsection{Applications en algèbre}
+
+\par Un corps commutatif \( K \) est un anneau commutatif avec une identité où chaque élément non nul admet un inverse. Plus informellement c'est une structure algébrique où les opérations d'addition, de soustraction, de multiplication et de division sont bien définies. La clôture algébrique de \( K \) est définie comme l'ensemble \( \overline{K} \), tel que tout polynôme \( P \) non nul dans \( K \) admet une racine dans \( \overline{K} \). Dans certains cas, il est difficile d'exprimer de manière simple cette extension.
+
+\par On considère ici \( \mathbb{F}_{2} \coloneqq \mathbb{Z}/2\mathbb{Z} \). Conway montre dans \cite{conway2000onag} que l'on peut identifier \( \overline{\mathbb{F}_{2}} \) à \(\omega^{\omega^\omega} \). Dans \cite{lenstra1977algebraic}, Lenstra explicite les résultats de Conway et notemment l'opération de multiplication sur ce corps. La preuve de ces résultats, étant technique et longue, ne sera pas traitée dans ce texte.
+classe =/= ensemble dans ZFC =/= Godel-Bernays.
+
 \clearpage
 \printbibliography[heading=bibintoc]
 
