@@ -305,6 +305,12 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 
 	Donc \( \bigcup\Omega < S(\bigcup\Omega) \le \bigcup\Omega \), ce qui implique \( \bigcup\Omega \in \bigcup\Omega \), or cela contredit 2.1.7.
 \end{proof}
+
+\begin{remark}
+	Par conséquent, les ordinaux forment une \textit{classe propre}, c'est-à-dire une classe qui n'est pas un ensemble, terminologie utilisée dans la théorie de von-Neumann–Bernays–Gödel (NBG). On note en général \textbf{Ord} la classe des ordinaux. 
+	Dans ZF, les classes ne sont pas définies de manière formelle, et on doit expliciter une formule ensembliste pour spécifier la classe (voir la section sur les cardinaux ci-dessous pour un exemple). 
+
+\end{remark}
 \par On distingue désormais deux familles d'ordinaux.
 \begin{definition}[Ordinal successeur, limite]
 	Soit \( \alpha \) un ordinal non nul. \( \alpha \) est dit successeur s'il existe \( \beta \) vérifiant \( \alpha = S(\beta) \), et limite si on a \( \alpha = \bigcup \alpha \).
@@ -407,15 +413,27 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	C'est une conséquence directe du théorème de Cantor.
 \end{proof}
 
+\begin{definition}[Successeur, limite]
+	Soit \( \kappa \) un cardinal infini. De même que pour les ordinaux, on note \( \kappa^{+} \) le successeur de \( \kappa \) et on appelle \textit{cardinal limite} tout cardinal qui n'est pas un successeur.
+\end{definition}
+
+\begin{remark}
+	Puisque les ordinaux ne forment pas un ensemble mais une classe propre, il en est de même pour les cardinaux. On peut expliciter que \( \kappa \) est un cardinal avec la formule ensembliste suivante :
+
+	\par \( \kappa \in \textbf{Ord},  \forall{\alpha < \kappa}, \forall{f : \alpha \mapsto \kappa}, \exists{\beta \in \kappa}, \forall{\gamma \in \alpha}, (f(\gamma) \neq \beta) \).
+
+	La classe des cardinaux est notée \textbf{Card}.
+\end{remark}
+
 \subsection{Alephs}
 
 \par On énumère désormais les cardinaux infinis à l'aide des résultat suivant.
 
-\begin{proposition}[La suite des cardinaux n'est pas bornée]
+\begin{lemma}[La suite des cardinaux n'est pas bornée]
 	Pour tout ensemble infini \( E \), il existe un plus petit ordinal \( \Theta \) ne s'injectant pas dans \( E \) tel que \( \Theta \) s'injecte dans \( \mathcal{P(\mathcal{P}}(E \times E))\). De plus \( \Theta \) est un cardinal.
-\end{proposition}
+\end{lemma}
 \begin{proof}[Idée générale de la démonstration]
-	A compléter
+	On utilise la notion de classe fonctionnelle pour expliciter l'existence de \( \theta \) et prouver le fait que c'est un cardinal. L'argument utilsant une structure non "commununément utilisée" dans ZF, il ne sera pas développé ici, on pourra se référer à \cite{dehornoy2017théorie} pour la démonstration complète.
 \end{proof}
 
 \begin{proposition}[Successeur]
@@ -492,7 +510,7 @@ Plus généralement, Conway utilise dans \cite{conway2000onag} la théorie des n
 \par Un corps commutatif \( K \) est un anneau commutatif avec une identité où chaque élément non nul admet un inverse. Plus informellement c'est une structure algébrique où les opérations d'addition, de soustraction, de multiplication et de division sont bien définies. La clôture algébrique de \( K \) est définie comme l'ensemble \( \overline{K} \), tel que tout polynôme \( P \) non nul dans \( K \) admet une racine dans \( \overline{K} \). Dans certains cas, il est difficile d'exprimer de manière simple cette extension.
 
 \par On considère ici \( \mathbb{F}_{2} \coloneqq \mathbb{Z}/2\mathbb{Z} \). Conway montre dans \cite{conway2000onag} que l'on peut identifier \( \overline{\mathbb{F}_{2}} \) à \(\omega^{\omega^\omega} \). Dans \cite{lenstra1977algebraic}, Lenstra explicite les résultats de Conway et notemment l'opération de multiplication sur ce corps. La preuve de ces résultats, étant technique et longue, ne sera pas traitée dans ce texte.
-classe =/= ensemble dans ZFC =/= Godel-Bernays.
+
 
 \clearpage
 \printbibliography[heading=bibintoc]
