@@ -1,9 +1,10 @@
-\documentclass{article}
+\documentclass[french]{article}
 \usepackage[T1]{fontenc} % Font enconding
 \usepackage[french]{babel} % Input encoding in French
 \usepackage{mathtools} % Include math symbols
 \usepackage{amsfonts} % Include font for math symbols
 \usepackage{amsthm} % Change definition layout
+\usepackage{amssymb} % Use aleph and beth symbols
 \usepackage{enumitem} % Modern item enumeration
 \usepackage{csquotes} % Typeset quoted texts in French correctly
 \usepackage[backend=biber]{biblatex} % For bibliography usage
@@ -41,22 +42,24 @@
 \title{UE Projet Tutoré : Ensembles de cardinal infini}
 \author{Auteur :\\
 	Guillaume SALLOUM \\ 
-	Avignon Université \\ 
-	L2 Mathématiques
+	L2 Mathématiques \\ 
+	Avignon Université
 	\and
 	Enseignant : \\
 	Marc ARCOSTANZO \\
+	MCF \\
 	Avignon Université}
 \date{}
 
 \begin{document}
 
-
 \maketitle
 \begin{abstract}
-	Nous étudierons quelques propriétés des ensembles infinis. 
+	Nous étudierons quelques propriétés des ensembles de cardinal infini. 
 	Dans un premier temps nous établirons l'existence d'ensembles infinis et indénombrables, en prouvant l'indénombrabilité de \( \mathbb{R} \) à l'aide de l'argument diagnonal de Cantor. 
-	Nous construirons ensuite les ordinaux (modèle de von Neumann), qui nous permettrons d'aborder très brièvement l'étude des cardinaux infinis. Enfin, nous citerons quelques applications de la formalisation des ordinaux.
+	Nous construirons ensuite les ordinaux, qui nous permettrons d'aborder très brièvement l'étude des cardinaux infinis. 
+	
+	Enfin, nous citerons quelques applications de la formalisation des ordinaux.
 	Dans tout ce qui suit, on se place dans le modèle axiomatique ZFC où l'on précisera quand on utilise l'axiome du choix, noté AC. 
 \end{abstract}
 
@@ -82,7 +85,8 @@ On rappelle des propriétés utilisées dans toute la suite pour comparer deux e
 \end{definition}
 \begin{definition}[Cardinal d'un ensemble fini]
 	Soit \( E \) et \( F \) deux ensembles \textit{finis}.
-	Alors E est en bijection avec un intervalle de \( \mathbb{N} \) de la forme \( \{1, 2, \ldots, n\} \) où \textit{n} est le cardinal de \( E \). \\
+	Alors E est en bijection avec un intervalle de \( \mathbb{N} \) de la forme \( \{1, 2, \ldots, n\} \) où \textit{n} est le cardinal de \( E \), noté \( |E| \).
+	
 	\( E \) et \( F \) sont de même cardinal si et seulement si il existe une bijection de \( E \) dans \( F \).
 \
 \end{definition}
@@ -122,6 +126,13 @@ On rappelle des propriétés utilisées dans toute la suite pour comparer deux e
 	
 \end{proof}
 
+\begin{center}
+	\includegraphics[scale=0.3]{rVEQX.png}
+\end{center}
+\begin{remark}
+	Dans l’illustration ci-dessus, la séquence construite n’est pas exhaustive, on ne peut donc pas dénombrer les réels. On peut aussi montrer que n'importe quelle application \( f : \mathbb{N} \rightarrow [0,1] \) n'est pas surjective, ce qui implique le résultat.
+\end{remark}
+
 \begin{theorem}[Cantor, Fraenkel, König]
 	L'ensemble \( \mathbb{R}^{2} \coloneqq \mathbb{R} \times \mathbb{R}\) est en bijection avec \( \mathbb{R} \). \cite{aigner2018proofs} 
 \end{theorem}
@@ -157,7 +168,7 @@ On rappelle des propriétés utilisées dans toute la suite pour comparer deux e
 	Puisque \( \mathbb{C} \) est isomorphe à \( \mathbb{R}^{2} \), on a \( |\mathbb{C}| = |\mathbb{R}^{2}| = |\mathbb{R}| \).
 \end{corollary}
 
-\par On peut étendre la preuve ci-dessus à un nombre fini de coordonnées et obtenir que \( |\mathbb{R}| = |\mathbb{R}^{n}| \) pour \( n \in \mathbb{N} \). 
+\par On peut étendre la preuve ci-dessus à un nombre fini de coordonnées et obtenir que \( |\mathbb{R}| = |\mathbb{R}^{n}| \) pour \( n \in \mathbb{N} \), résultat obtenu par Cantor en 1878 \cite{kanamori2009set}. 
 On établit ainsi l'existence de deux cardinaux infinis distincs : celui de \( \mathbb{N} \) et celui de \( \mathbb{R} \). Avec la proposition suivante, on va voir qu'il en existe une infinité.
 \begin{proposition}[théorème de Cantor]
 	Soit \( A \) un ensemble. Alors l'ensemble des parties de A et \( A \) ne sont pas en bijection.
@@ -173,6 +184,10 @@ On établit ainsi l'existence de deux cardinaux infinis distincs : celui de \( \
 \end{corollary}
 
 D'après l'argument diagonal de Cantor on obtient \( |\mathbb{R}| > |\mathbb{N}| \), ce qui soulève la question de \textit{l'hypothèse du continu} : tout sous-ensemble infini de \( \mathbb{R} \) est-il soit en bijection avec \( \mathbb{N} \), ou avec \( \mathbb{R} \)? Cette question célèbre a notemment motivé le développement de la théorie des ensembles.
+
+\begin{remark}
+	On pourra se référer au chapitre 3 partie 2 pour une formulation rigourseuse de l’hypothèse du continu. 
+\end{remark}
 
 \clearpage
 \section{Ordinaux}
@@ -307,7 +322,7 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 \end{proof}
 
 \begin{remark}
-	Par conséquent, les ordinaux forment une \textit{classe propre}, c'est-à-dire une classe qui n'est pas un ensemble, terminologie utilisée dans la théorie de von-Neumann–Bernays–Gödel (NBG). On note en général \textbf{Ord} la classe des ordinaux. 
+	Par conséquent, les ordinaux forment une \textit{classe propre}, c'est-à-dire une classe qui n'est pas un ensemble, terminologie utilisée dans la théorie des ensembles de von-Neumann–Bernays–Gödel (NBG). On note en général \textbf{Ord} la classe des ordinaux. 
 	Dans ZF, les classes ne sont pas définies de manière formelle, et on doit expliciter une formule ensembliste pour spécifier la classe (voir la section sur les cardinaux ci-dessous pour un exemple). 
 
 \end{remark}
@@ -433,7 +448,7 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	Pour tout ensemble infini \( E \), il existe un plus petit ordinal \( \Theta \) ne s'injectant pas dans \( E \) tel que \( \Theta \) s'injecte dans \( \mathcal{P(\mathcal{P}}(E \times E))\). De plus \( \Theta \) est un cardinal.
 \end{lemma}
 \begin{proof}[Idée générale de la démonstration]
-	On utilise la notion de classe fonctionnelle pour expliciter l'existence de \( \theta \) et prouver le fait que c'est un cardinal. L'argument utilsant une structure non "commununément utilisée" dans ZF, il ne sera pas développé ici, on pourra se référer à \cite{dehornoy2017théorie} pour la démonstration complète.
+	On utilise la notion de classe fonctionnelle pour expliciter l'existence de \( \theta \) et prouver le fait que c'est un cardinal. L'argument reposant sur la structure de classe, il ne sera donc pas développé ici, on pourra se référer à \cite{dehornoy2017théorie} pour la démonstration complète.
 \end{proof}
 
 \begin{proposition}[Successeur]
@@ -443,6 +458,7 @@ On montre à partir de cette définition qu'un ordinal \( \underline{n} \) poss�
 	D'après la proposition précédente, \( \Theta \) ne s'injecte pas dans \( \kappa \) et est un cardinal. Tout cardinal \( \mu < \kappa \) s'injecte dans \( \kappa \) donc \( \kappa < \Theta \). Si \( \lambda \) vérifie \( \lambda <  \Theta \) alors \( \lambda \le \kappa \). Donc \( \Theta \) est le plus petit cardinal supérieur à \( \kappa \).  
 \end{proof}
 
+\par Ces deux résultats permettent de définir la classe des alephs :
 \begin{definition}
 Pour tout ordinal \( \alpha \), on note \( \aleph_{\alpha} \) le cardinal infini \textit{aleph alpha} tel que :
 	\begin{enumerate}[label = (\roman*) ]
@@ -457,18 +473,50 @@ Pour tout ordinal \( \alpha \), on note \( \aleph_{\alpha} \) le cardinal infini
 \end{proposition}
 
 \begin{proof}
-La suite des alephs définie ci-dessus est un suite de cardinaux strictement croissante. On montre par récurrence sur \( \kappa \) qu'il existe un ordinal \( \alpha \) tel que \( \kappa = \aleph_{\alpha} \), c'est-à-dire que la suite des \( \aleph_{\alpha} \) est surjective.
-
-\par Si \( \kappa = \omega \), on a \( \kappa = \aleph_{0} \).
+La suite des alephs définie ci-dessus est un suite de cardinaux strictement croissante. On montre par récurrence sur \( \kappa \) qu'il existe un ordinal \( \alpha \) tel que \( \kappa = \aleph_{\alpha} \), c'est-à-dire que la suite des \( \aleph_{\alpha} \) est surjective. \cite{dehornoy2017théorie}.
 \end{proof}
 
+\begin{definition}[Hypothèse du continu généralisée (GCH)]
+	\begin{equation}\label{eq:GCH1} \tag{GCH1} 
+		\forall{\kappa \in \textbf{Card} }, 2^{\kappa} = \kappa^{+}.
+	\end{equation}
+On peut reformuler cette définition avec les alephs :
+	\begin{equation}\label{eq:GCH2} \tag{GCH2}
+	\forall{\alpha \in \textbf{Ord}}, 2^{\aleph_{\alpha}} = \aleph_{\alpha+1} 
+	\end{equation}
+Par exemple, pour \( \aleph_{0} \) cela donne l'hypothèse du continue sur \( \mathbb{R} \) :
+	\begin{equation}\label{eq:HC} \tag{HC}
+	|\mathbb{R}| = 2^{\aleph_{0}} = \aleph_{1} 
+	\end{equation}
+
+\end{definition}
 
 \subsection{Nombres de Beth}
+
+\par Les nombres de Beth forment une autre énumération non-exhaustive des cardinaux infinis. En effet, contrairement aux alephs, tout les cardinaux infinis ne sont pas des nombres de Beth.
+\begin{definition}[Nombre de Beth]
+	On note \( \beth_{\alpha} \) le \textit{alpha-ième} nombre de Beth, où \( \alpha \) est un ordinal, défini de la manière suivante à l'aide du passage aux parties de \( \mathbb{N} \) :
+	\begin{enumerate}[label = (\roman*) ]
+		\item \( \beth_{0} \coloneqq \aleph_{0} \);
+		\item \( \beth_{\alpha + 1} = 2^{\beth_{\alpha}} \);
+		\item \( \beth_{\lambda} = \sup_{\alpha < \lambda} \beth_{\alpha} \) où \( \lambda \) est un ordinal limite.
+	\end{enumerate}
+
+	\par On a donc : 
+
+	\( \beth_{0} = |\mathbb{N}| \), \( \beth_{1} = |\mathcal{P}(\mathbb{N})|,\) \( \beth_{2} = |\mathcal{P}(\mathcal{P}(\mathbb{N}))| \), et ainsi de proche en proche.
+
+\end{definition}
+\par Si l'hypothèse du continue généralisée est admise, on a : \cite{4301717}
+\begin{equation*}
+	\forall \alpha \in \textbf{Ord}, \aleph_{\alpha} = \beth_{\alpha}
+\end{equation*}
 
 \clearpage
 
 \section{Applications}
-\subsection{Applications en analyse}
+\subsection{Applications en Analyse}
+\subsubsection{Ensemble image d'une fonction continue sur un compact}
 
 \par La formalisation des ordinaux permet de donner des preuves alternatives à certains problèmes d'analyse. On expose ici une preuve issue de \cite{gowers2010ordinals}.
 
@@ -488,16 +536,33 @@ Si f est continue sur \( [0,1] \), il existe \( s > x \) tel que f est bornée s
 
 Alors f est bornée jusqu'à \( e_{y} \). Tant que \( y \neq 1 \), cette construction définit un isomorphisme unique qui préserve l'ordre entre \( E_{\alpha} \) et \( [0,1] \).
 
+\end{proof}
+
+\subsubsection{Convergence des suites de Goodstein}
+
+\par Un entier \( n \) peut être décomposé dans la base \( p \geq 2 \) :
+\begin{equation*}
+	n = p^{n_{1}}.c_{1} + \ldots + p^{n_{k}}.c_{k}
+\end{equation*}
+Les exposants \( n_{i} \) peuvent être eux aussi exprimés en base \( p \) pour obtenir le développement itéré (ou héréditaire) de \( n \) en base \( p \).
+
+\begin{definition}[Suite de Goodstein]
+La suite de Goodstein d'un entier \( m \), notée \( G_{n}(m) \) est définie récursivement :
+\begin{enumerate}[label = (\roman*)]
+	\item Si \( G_{n}(m) = 0 \), la suite \( G(m) \) est finie de longueur 0
+	\item Sinon on écrit \( G_{n}(m) \) en notation héréditaire en base \( n+1 \), puis on remplace \( n+1 \) par \( n+2 \). Puis on soustrait 1 au résultat et on obtient \( G_{n+1}(m) \).
+\end{enumerate}
+\end{definition}
+
 \begin{proposition}
-	Toute suite de Goodstein converge vers 0
+	Toute suite de Goodstein \( G_{n}(m) \) converge vers 0
 \end{proposition}
 
 \begin{proof}[Idée générale de la preuve]
-	Voir \cite{dehornoy2017théorie}
-\end{proof}
+	On construit une suite d'ordinaux \( T_{n}(m) \) strictement décroissante et terminale, qui implique que \( G_{n}(m) \) se termine lorsqu'elle s'annule. \cite{dehornoy2017théorie}
 \end{proof}
 
-\subsection{Applications en théorie des jeux combinatoires}
+\subsection{Applications en Théorie des jeux combinatoires}
 
 \par En théorie des jeux combinatoires, on modélise un jeu sans élément aléatoire à deux personnes \( G \) comme une paire ordonnée \( G=(L,R) \) possédant une condition terminale, où \( L \) et \( R \) sont des ensembles, dont les éléments désignent les options que chque joueur possède à une position donnée. Les ordinaux, munis d'une nouvelle opération d'addition et de multiplication, servent à modéliser les tas dans les jeux de Nim. Un tas d'allumettes dans un jeu de Nim est alors appelé \( nimber \), et est un ordinal particulier. 
 
@@ -505,13 +570,20 @@ Il existe une classification des jeux impartiaux d'après Sprague-Grundy, où ch
 
 Plus généralement, Conway utilise dans \cite{conway2000onag} la théorie des nombres surréels (les réels et les nombres transfinis) et les ordinaux afin d'analyser certains jeux. 
 
-\subsection{Applications en algèbre}
+
+\subsection{Applications en Topologie}
+\par L'ordinal \( \omega_{1} \) est utilisé en Topologie pour construire certains contre-exemples. \( \omega_{1} \) muni de la topologie de l'ordre est un espace séquentiellement compact mais non compact.
+\par La longue droite \( L \) est construite comme le produit lexicographique de \( \omega_{1} \) et de \( [0,1[ \). \( L \coloneqq \omega_{1} \times [0,1[ \ \) est un espace topologique particulier, pusiqu'il est de Hausdorff, localement compact et non métrisable. En un certain sens, il est plus "long" que \( \mathbb{R} \), mais possède le même cardinal. 
+\par La planche de Tychonoff est le produit \( [0, \omega_{1}] \times [0,\omega] \). C'est un espace de Hausdorff, compact et donc normal. Néanmoins il possède un sous-espace qui n'est pas normal : la planche de Tychonoff épointée, obtenu en enlevant le point \( \infty = (\omega_{1}, \omega) \). Ceci permet de montrer qu'un sous-espace d'un espace normal n'est pas nécessairement normal. \cite{1103518}
+
+\clearpage
+\subsection{Applications en Algèbre}
 
 \par Un corps commutatif \( K \) est un anneau commutatif avec une identité où chaque élément non nul admet un inverse. Plus informellement c'est une structure algébrique où les opérations d'addition, de soustraction, de multiplication et de division sont bien définies. La clôture algébrique de \( K \) est définie comme l'ensemble \( \overline{K} \), tel que tout polynôme \( P \) non nul dans \( K \) admet une racine dans \( \overline{K} \). Dans certains cas, il est difficile d'exprimer de manière simple cette extension.
 
-\par On considère ici \( \mathbb{F}_{2} \coloneqq \mathbb{Z}/2\mathbb{Z} \). Conway montre dans \cite{conway2000onag} que l'on peut identifier \( \overline{\mathbb{F}_{2}} \) à \(\omega^{\omega^\omega} \). Dans \cite{lenstra1977algebraic}, Lenstra explicite les résultats de Conway et notemment l'opération de multiplication sur ce corps. La preuve de ces résultats, étant technique et longue, ne sera pas traitée dans ce texte.
-
-
+\par On considère ici \( \mathbb{F}_{2} \coloneqq \mathbb{Z}/2\mathbb{Z} \). Conway montre dans \cite{conway2000onag} que l'on peut identifier \( \overline{\mathbb{F}_{2}} \) à \(\omega^{\omega^\omega} \). Dans \cite{lenstra1977algebraic}, Lenstra explicite les résultats de Conway et notemment l'opération de multiplication sur ce corps. La preuve de ces résultats ne sera pas traitée dans ce texte. \\
+\par Pour clore ce document, nous laisserons le lecteur sur une citation d’Akihiro Kanamori issue de \cite{kanamori2009set} : "\textit{Thus, set theory is more of an open-ended framework for mathematics rather than an elucidating foundation. It is as a field of mathematics that both proceeds with its own internal questions and is capable of contextualizing over a broad range which makes of set theory an intriguing and highly distinctive subject.}"
+	
 \clearpage
 \printbibliography[heading=bibintoc]
 
